@@ -1,0 +1,230 @@
+/* Container Styles */
+  .defcon-hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+    background-color: #06273e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Video Background Overlay */
+  .defcon-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  .defcon-video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .defcon-gradient-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(6, 39, 62, 0.8) 0%, rgba(0, 145, 255, 0.4) 100%);
+    z-index: 2;
+    animation: defconGradientPulse 15s ease infinite;
+  }
+
+  @keyframes defconGradientPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Content Styles */
+  .defcon-hero-content {
+    position: relative;
+    z-index: 5;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .defcon-headline {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: defconFadeIn 0.8s ease forwards 0.3s;
+  }
+
+  .defcon-typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid #0091ff;
+    white-space: nowrap;
+    animation: defconTyping 3.5s steps(40, end), defconBlink 0.75s step-end infinite;
+  }
+
+  @keyframes defconTyping {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes defconBlink {
+    from, to { border-color: transparent }
+    50% { border-color: #0091ff }
+  }
+
+  .defcon-subheadline {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: #e5e5e5;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: defconFadeIn 0.8s ease forwards 0.8s;
+  }
+
+  @keyframes defconFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* CTA Button */
+  .defcon-cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(45deg, #0091ff 0%, #0065b3 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: defconFadeIn 0.8s ease forwards 1.2s;
+    box-shadow: 0 10px 30px rgba(0, 145, 255, 0.3);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .defcon-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 145, 255, 0.4);
+  }
+
+  .defcon-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0065b3 0%, #0091ff 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .defcon-cta-button:hover::before {
+    opacity: 1;
+  }
+
+  /* Particles */
+  .defcon-particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .defcon-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0, 145, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: defconParticlePulse 4s ease infinite;
+    will-change: transform;
+  }
+
+  .defcon-particle:hover {
+    transform: scale(2);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .defcon-particle-connector {
+    position: absolute;
+    height: 1px;
+    background-color: rgba(0, 145, 255, 0.3);
+    transform-origin: left center;
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+
+  @keyframes defconParticlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .defcon-hero-container {
+      min-height: 600px;
+    }
+
+    .defcon-headline {
+      font-size: 2.5rem;
+    }
+
+    .defcon-subheadline {
+      font-size: 1.1rem;
+    }
+
+    .defcon-cta-button {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+    }
+
+    .defcon-particle {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .defcon-headline {
+      font-size: 2rem;
+    }
+
+    .defcon-typewriter {
+      white-space: normal;
+      border-right: none;
+      animation: none;
+    }
+  }
